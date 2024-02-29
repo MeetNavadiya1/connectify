@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+}
+
+/* --------------navbar----------------- */
+.m-nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 10px;
+    background: beige;
+    align-items: center;
+}
+
+.m-links{
+    align-items: center;
+}
+
+.m-links ul{
+    list-style: none;
+    display: flex;
+}
+
+.m-links ul li{
+    margin-left: 30px;
+}
