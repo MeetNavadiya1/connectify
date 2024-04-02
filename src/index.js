@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AdminLogin from './AdminLogin';
-import AdminHome from './AdminHome';
-import AdminCategory from './AdminCategory';
-import AdminAddCategory from './AdminAddCategory';
-import AdminEditCategory from './AdminEditCategory';
-import AdminBusinesses from './AdminBusinesses';
-import AdminBusinessDetail from './AdminBusinessDetail';
-import AdminDigitalCard from './AdminDigitalCard';
-import AdminDigitalCardDetail from './AdminDigitalCardDetails';
-import AdminUsers from './AdminUsers';
-import AdminUsersDetail from './AdminUsersDetail';
-import AdminForgotPassword from './AdminForgotPassword';
-import AdminChangePassword from './AdminChangePassword';
-import AdminLogOut from './AdminLogOut';
+import AdminLogin from './Admin/AdminLogin';
+import AdminHome from './Admin/AdminHome';
+import AdminCategory from './Admin/AdminCategory';
+import AdminAddCategory from './Admin/AdminAddCategory';
+import AdminEditCategory from './Admin/AdminEditCategory';
+import AdminBusinesses from './Admin/AdminBusinesses';
+import AdminBusinessDetail from './Admin/AdminBusinessDetail';
+import AdminDigitalCard from './Admin/AdminDigitalCard';
+import AdminDigitalCardDetail from './Admin/AdminDigitalCardDetails';
+import AdminUsers from './Admin/AdminUsers';
+import AdminUsersDetail from './Admin/AdminUsersDetail';
+import AdminForgotPassword from './Admin/AdminForgotPassword';
+import AdminChangePassword from './Admin/AdminChangePassword';
+import AdminLogOut from './Admin/AdminLogOut';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -31,9 +31,9 @@ function MyRouter(){
                 <Route path='/digital-card' element={<AdminDigitalCard />} />
                 <Route path='/digital-card-detail' element={<AdminDigitalCardDetail />} />
                 <Route path='/users' element={<AdminUsers />} />
-                <Route path='/users-detail' element={<AdminUsersDetail />} />
+                <Route path='/users-detail/:userid' element={<AdminUsersDetail />} />
                 <Route path='/businesses' element={<AdminBusinesses />} />
-                <Route path='/business-detail' element={<AdminBusinessDetail />} />
+                <Route path='/business-detail/:businessid' element={<AdminBusinessDetail />} />
                 <Route path='/change-password' element={<AdminChangePassword />} />
                 <Route path='/log-out' element={<AdminLogOut />} />
             </Routes>
