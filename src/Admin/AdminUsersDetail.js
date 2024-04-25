@@ -17,7 +17,7 @@ export default function AdminUsersDetail() {
     let [user, setUser] = useState([]);
     useEffect(() => {
         if (user.length === 0) {
-            let apiAddress = 'http://localhost:5000/users-detail/' + userid;
+            let apiAddress = 'http://localhost:5000/admin-users-detail/' + userid;
             axios({
                 method: 'get',
                 responseType: 'json',
@@ -56,8 +56,8 @@ export default function AdminUsersDetail() {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12 d-flex justify-content-between align-content-center">
-                            <span className="fw-bolder fs-6">Users</span>
-                            <Link to="/users" className="btn btn-primary m-1">Back</Link>
+                            <span className="fw-bolder fs-4">Users</span>
+                            <Link to="/admin-users" className="btn btn-primary m-1">Back</Link>
                         </div>
                     </div>
                     <div className="row mt-3">
@@ -68,38 +68,26 @@ export default function AdminUsersDetail() {
                                         <th colSpan={2} className="text-center fs-5">User's Details</th>
                                     </tr>
                                 </thead>
-                                <tbody className="fs-4 table-group-divider">
+                                <tbody className="table-group-divider">
                                     <tr>
-                                        <td>Id</td>
-                                        <td>{user.user_id}</td>
+                                        <td><span className="mx-3">Id</span></td>
+                                        <td><span className="mx-3">{user.id}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>Name</td>
-                                        <td>{user.name}</td>
+                                        <td><span className="mx-3">User Name</span></td>
+                                        <td><span className="mx-3">{user.username}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>User Name</td>
-                                        <td>{user.username}</td>
+                                        <td><span className="mx-3">Password</span></td>
+                                        <td><span className="mx-3">{user.password}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>Password</td>
-                                        <td>{user.password}</td>
+                                        <td><span className="mx-3">Email</span></td>
+                                        <td><span className="mx-3">{user.email}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>Email</td>
-                                        <td>{user.email}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mobile No</td>
-                                        <td>{user.mobile_no}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Address</td>
-                                        <td>{user.address}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>City</td>
-                                        <td>{user.city}</td>
+                                        <td><span className="mx-3">Mobile No</span></td>
+                                        <td><span className="mx-3">{user.mobile}</span></td>
                                     </tr>
                                 </tbody>
                             </table>

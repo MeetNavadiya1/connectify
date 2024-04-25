@@ -15,7 +15,7 @@ export default function AdminBusinesses() {
     let [businesses, setBusinesses] = useState([]);
     useEffect(() => {
         if (businesses.length === 0) {
-            let apiAddress = 'http://localhost:5000/businesses';
+            let apiAddress = 'http://localhost:5000/admin-businesses';
 
             axios({
                 method: "get",
@@ -42,14 +42,13 @@ export default function AdminBusinesses() {
     });
 
     let DisplayBusinesses = function (item) {
-        let {business_id, business_name, mobile_no} = item;
+        let {business_id, business_name } = item;
         return (
             <tr>
                 <td>{business_id}</td>
                 <td>{business_name}</td>
-                <td>{mobile_no}</td>
                 <td>
-                    <Link to={"/business-detail/" + business_id}>
+                    <Link to={"/admin-business-detail/" + business_id}>
                         <i className="fa-solid fa-circle-info fa-2xl" />
                     </Link>
                 </td>
@@ -71,7 +70,7 @@ export default function AdminBusinesses() {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12 d-flex justify-content-between align-content-center">
-                            <span className="fw-bolder fs-6">Businesses</span>
+                            <span className="fw-bolder fs-4">Businesses</span>
                         </div>
                     </div>
                     <div className="row">
@@ -84,7 +83,6 @@ export default function AdminBusinesses() {
                                             <tr>
                                                 <th>SR NO</th>
                                                 <th>BUSINESS_NAME</th>
-                                                <th>MOBILE</th>
                                                 <th>DETAILS</th>
                                             </tr>
                                         </thead>

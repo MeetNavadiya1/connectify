@@ -11,28 +11,17 @@ export default function AdminHome() {
 
     VerifyLogin();
 
-    let [users, setusers] = useState([]);
+    let [users, setUsers] = useState([]);
     useEffect(() => {
         if (users.length === 0) {
-            let apiAddress = 'http://localhost:5000/home';
+            let apiAddress = 'http://localhost:5000/admin-home';
             axios({
                 method: 'get',
                 responseType: 'json',
                 url: apiAddress
             }).then((response) => {
                 console.log(response);
-                let error = response.data[0]['error'];
-                let total = response.data[1]['total'];
-                if (error !== 'no') {
-                    showError(error);
-                }
-                else if (total === 0) {
-                    showError('No user found')
-                }
-                else {
-                    response.data.splice(0, 2);
-                    setusers(response.data[0]);
-                }
+                setUsers(response.data)
             }).catch((error) => {
                 console.log(error);
                 showError('server is not responding');
@@ -53,6 +42,11 @@ export default function AdminHome() {
                 {/*  Header End */}
                 <div className="container-fluid">
                     <div className="row">
+                        <div className="col-12 mb-3">
+                            <span className="fw-bolder fs-4">Home</span>
+                        </div>
+                    </div>
+                    <div className="row">
                         <div className="col-4">
                             <div className="card overflow-hidden shadow">
                                 <div className="card-body p-4 text-center">
@@ -60,7 +54,7 @@ export default function AdminHome() {
                                     <div className="row">
                                         <div className="col-12 fs-6">
                                             <i className="fa-solid fa-building text-success-emphasis" style={{ "font-size": "4rem" }} />
-                                            <span className="mx-4 fw-semibold" style={{ "font-size": "3rem" }}>36</span>
+                                            <span className="mx-4 fw-semibold" style={{ "font-size": "3rem" }}>{users.businesses}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +80,7 @@ export default function AdminHome() {
                                     <div className="row">
                                         <div className="col-12 fs-6 align-items-center">
                                             <i className="fa-solid fa-credit-card text-danger" style={{ "font-size": "4rem" }} />
-                                            <span className="mx-4 fw-semibold" style={{ "font-size": "3rem" }}>36</span>
+                                            <span className="mx-4 fw-semibold" style={{ "font-size": "3rem" }}>{users.cards}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -98,8 +92,8 @@ export default function AdminHome() {
                                     <h5 className="card-title mb-9 fw-semibold">Total Category</h5>
                                     <div className="row">
                                         <div className="col-12 fs-6 align-items-center">
-                                            <i className="fa-solid fa-list text-info" style={{ "font-size": "4rem" }} />
-                                            <span className="mx-4 fw-semibold" style={{ "font-size": "3rem" }}>36</span>
+                                            <i className="fa-solid fa-layer-group text-warning" style={{ "font-size": "4rem" }} />
+                                            <span className="mx-4 fw-semibold" style={{ "font-size": "3rem" }}>{users.category}</span>
                                         </div>
                                     </div>
                                 </div>

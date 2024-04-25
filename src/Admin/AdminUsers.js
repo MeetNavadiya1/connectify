@@ -15,7 +15,7 @@ export default function AdminUsers() {
     let [users, setusers] = useState([]);
     useEffect(() => {
         if (users.length === 0) {
-            let apiAddress = 'http://localhost:5000/users';
+            let apiAddress = 'http://localhost:5000/admin-users';
             axios({
                 method: 'get',
                 responseType: 'json',
@@ -42,14 +42,14 @@ export default function AdminUsers() {
     });
 
     let DisplayUsers = function (item) {
-        let { user_id, username, mobile_no } = item;
+        let { id, username, mobile } = item;
         return (
             <tr>
-                <td>{user_id}</td>
+                <td>{id}</td>
                 <td>{username}</td>
-                <td>{mobile_no}</td>
+                <td>{mobile}</td>
                 <td>
-                    <Link to={"/users-detail/" + user_id}>
+                    <Link to={"/admin-users-detail/" + id}>
                         <i className="fa-solid fa-circle-info fa-2xl" />
                     </Link>
                 </td>
@@ -71,7 +71,7 @@ export default function AdminUsers() {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12 d-flex justify-content-between align-content-center">
-                            <span className="fw-bolder fs-6">Users</span>
+                            <span className="fw-bolder fs-4">Users</span>
                         </div>
                     </div>
                     <div className="row">

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import showError, { showMessage } from "./Tost-Message";
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
-import { useCookies } from 'react-cookie'
+import { useCookies } from 'react-cookie';
 
 export default function AdminLogin() {
 
@@ -17,7 +17,7 @@ export default function AdminLogin() {
 
     let Login = function (event) {
         // console.log(email,password);
-        let apiAddress = "http://127.0.0.1:5000/";
+        let apiAddress = "http://127.0.0.1:5000/admin-login";
         //required input [email,password]
         let form = {
             email: email,
@@ -45,7 +45,7 @@ export default function AdminLogin() {
                     setCookie('id', response.data[3]['id'], { path: '/' });
                     // console.log('updated cookie', cookies['id']);
                     setTimeout(() => {
-                        navigator("/home");
+                        navigator("/admin-home");
                     }, 2000);
                 }
                 else {
@@ -83,9 +83,9 @@ export default function AdminLogin() {
                                             <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(event) => setPassword(event.target.value)}/>
                                         </div>
                                         <div className="text-end mb-4">
-                                            <a className="text-primary fw-bold" href="admin-forgot-password.html">Forgot Password ?</a>
+                                            <Link className="text-primary" to="/admin-forgot-password">Forgot Password ?</Link>
                                         </div>
-                                        <input type="submit" value="Sign In" className="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" />
+                                        <input type="submit" value="Sign In" className="btn btn-primary w-100 py-8 mb-4 rounded-2" />
                                     </form>
                                 </div>
                             </div>
